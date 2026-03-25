@@ -5,7 +5,7 @@
     <dimen name="spacing_lg">24dp</dimen>
     <dimen name="spacing_xl">32dp</dimen>
     <dimen name="card_radius">16dp</dimen>
-    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_elevation">0dp</dimen>
     <dimen name="icon_size">48dp</dimen>
     <dimen name="icon_size_sm">36dp</dimen>
     <dimen name="text_size_tiny">10sp</dimen>

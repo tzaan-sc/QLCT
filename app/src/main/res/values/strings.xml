@@ -1,49 +1,50 @@
 <resources>
-    <string name="app_name">QLCT - Expense Manager</string>
-    <string name="home">Home</string>
-    <string name="history">History</string>
-    <string name="categories">Categories</string>
+    <string name="app_name">QLCT - Quản Lý Chi Tiêu</string>
+    <string name="home">Trang Chủ</string>
+    <string name="history">Lịch Sử</string>
+    <string name="categories">Danh Mục</string>
 
-    <!-- Home -->
-    <string name="total_balance">Total Balance</string>
-    <string name="total_income">Income</string>
-    <string name="total_expense">Expense</string>
-    <string name="recent_transactions">Recent Transactions</string>
-    <string name="see_all">See All</string>
-    <string name="no_transactions">No transactions yet</string>
+    <!-- Trang Chủ -->
+    <string name="total_balance">Số Dư</string>
+    <string name="total_income">Thu Nhập</string>
+    <string name="total_expense">Chi Tiêu</string>
+    <string name="recent_transactions">Giao Dịch Gần Đây</string>
+    <string name="see_all">Xem Tất Cả</string>
+    <string name="no_transactions">Chưa có giao dịch nào</string>
 
-    <!-- Add Transaction -->
-    <string name="add_transaction">Add Transaction</string>
-    <string name="amount">Amount</string>
-    <string name="category">Category</string>
-    <string name="note">Note (optional)</string>
-    <string name="date">Date</string>
-    <string name="income">Income</string>
-    <string name="expense">Expense</string>
-    <string name="save">Save Transaction</string>
-    <string name="hint_amount">Enter amount</string>
-    <string name="hint_note">Add a note...</string>
+    <!-- Thêm Giao Dịch -->
+    <string name="add_transaction">Thêm Giao Dịch</string>
+    <string name="amount">Số Tiền</string>
+    <string name="category">Danh Mục</string>
+    <string name="note">Ghi Chú (tùy chọn)</string>
+    <string name="date">Ngày</string>
+    <string name="income">Thu Nhập</string>
+    <string name="expense">Chi Tiêu</string>
+    <string name="save">Lưu Giao Dịch</string>
+    <string name="hint_amount">Nhập số tiền</string>
+    <string name="hint_note">Thêm ghi chú...</string>
 
-    <!-- History -->
-    <string name="transaction_history">Transaction History</string>
-    <string name="filter_all">All</string>
-    <string name="filter_income">Income</string>
-    <string name="filter_expense">Expense</string>
+    <!-- Lịch Sử -->
+    <string name="transaction_history">Lịch Sử Giao Dịch</string>
+    <string name="filter_all">Tất Cả</string>
+    <string name="filter_income">Thu Nhập</string>
+    <string name="filter_expense">Chi Tiêu</string>
 
-    <!-- Category -->
-    <string name="category_management">Categories</string>
-    <string name="add_category">Add Category</string>
-    <string name="edit_category">Edit Category</string>
-    <string name="delete_category">Delete</string>
-    <string name="category_name">Category Name</string>
-    <string name="hint_category_name">Enter category name</string>
+    <!-- Danh Mục -->
+    <string name="category_management">Danh Mục</string>
+    <string name="add_category">Thêm Danh Mục</string>
+    <string name="edit_category">Chỉnh Sửa Danh Mục</string>
+    <string name="delete_category">Xóa</string>
+    <string name="category_name">Tên Danh Mục</string>
+    <string name="hint_category_name">Nhập tên danh mục</string>
 
-    <!-- Categories -->
-    <string name="cat_food">Food &amp; Drinks</string>
-    <string name="cat_transport">Transport</string>
-    <string name="cat_shopping">Shopping</string>
-    <string name="cat_health">Health</string>
-    <string name="cat_entertainment">Entertainment</string>
-    <string name="cat_salary">Salary</string>
-    <string name="cat_other">Other</string>
+    <!-- Các Danh Mục -->
+    <string name="cat_food">Ăn &amp; Uống</string>
+    <string name="cat_transport">Di Chuyển</string>
+    <string name="cat_shopping">Mua Sắm</string>
+    <string name="cat_health">Sức Khỏe</string>
+    <string name="cat_entertainment">Giải Trí</string>
+    <string name="cat_salary">Lương</string>
+    <string name="cat_other">Khác</string>
+
 </resources>

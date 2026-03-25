@@ -60,14 +60,14 @@ public class HomeActivity extends AppCompatActivity {
             public void onItemLongClick(Transaction transaction) {
                 // Long-press to delete (simple implementation)
                 new androidx.appcompat.app.AlertDialog.Builder(HomeActivity.this)
-                        .setTitle("Delete transaction?")
-                        .setMessage("Remove \"" + transaction.getCategory() + "\" from " +
+                        .setTitle("Xóa giao dịch?")
+                        .setMessage("Xóa \"" + transaction.getCategory() + "\" - " +
                                 transaction.getNote() + "?")
-                        .setPositiveButton("Delete", (d, w) -> {
+                        .setPositiveButton("Xóa", (d, w) -> {
                             dataManager.deleteTransaction(transaction.getId());
                             refreshUI();
                         })
-                        .setNegativeButton("Cancel", null)
+                        .setNegativeButton("Hủy", null)
                         .show();
             }
         });
@@ -112,12 +112,12 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onItemLongClick(Transaction transaction) {
                 new androidx.appcompat.app.AlertDialog.Builder(HomeActivity.this)
-                        .setTitle("Delete transaction?")
-                        .setPositiveButton("Delete", (d, w) -> {
+                        .setTitle("Xóa giao dịch?")
+                        .setPositiveButton("Xóa", (d, w) -> {
                             dataManager.deleteTransaction(transaction.getId());
                             refreshUI();
                         })
-                        .setNegativeButton("Cancel", null)
+                        .setNegativeButton("Hủy", null)
                         .show();
             }
         });

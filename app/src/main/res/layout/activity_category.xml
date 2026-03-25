@@ -32,7 +32,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:text="Categories"
+            android:text="Danh Mục"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="32dp"
-        android:text="No categories yet. Tap + to add."
+        android:text="Chưa có danh mục nào. Nhấn + để thêm."
         android:textColor="@color/colorTextSecondary"
         android:textSize="14sp"
         android:visibility="gone" />

@@ -41,7 +41,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:fontFamily="sans-serif-medium"
-                        android:text="My Wallet"
+                        android:text="Ví Của Tôi"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -80,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Total Balance"
+                    android:text="Số Dư"
                     android:textColor="#B3FFFFFF"
                     android:textSize="13sp" />
 
@@ -112,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     app:cardCornerRadius="16dp"
-                    app:cardElevation="8dp">
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -138,7 +138,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Income"
+                                android:text="Thu Nhập"
                                 android:textColor="@color/colorTextSecondary"
                                 android:textSize="12sp" />
 
@@ -162,7 +162,7 @@
                     android:layout_marginStart="12dp"
                     android:layout_weight="1"
                     app:cardCornerRadius="16dp"
-                    app:cardElevation="8dp">
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -188,7 +188,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Expense"
+                                android:text="Chi Tiêu"
                                 android:textColor="@color/colorTextSecondary"
                                 android:textSize="12sp" />
 
@@ -220,7 +220,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Recent Transactions"
+                    android:text="Giao Dịch Gần Đây"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -234,7 +234,7 @@
                     android:background="?attr/selectableItemBackground"
                     android:fontFamily="sans-serif-medium"
                     android:padding="4dp"
-                    android:text="See all"
+                    android:text="Xem tất cả"
                     android:textColor="@color/colorAccent"
                     android:textSize="14sp" />
             </RelativeLayout>
@@ -246,7 +246,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="32dp"
-                android:text="No transactions yet.\nTap + to add one!"
+                android:text="Chưa có giao dịch nào.\nNhấn + để thêm mới!"
                 android:textColor="@color/colorTextSecondary"
                 android:textSize="14sp"
                 android:visibility="gone" />
@@ -272,11 +272,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
-        android:text="Add"
+        android:text="Thêm"
         app:icon="@android:drawable/ic_input_add"
         app:iconTint="@color/white"
         android:textColor="@color/white"
-        app:backgroundTint="@color/colorAccent"
-        app:elevation="8dp" />
+        app:backgroundTint="@color/colorAccent" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -25,8 +25,8 @@ public class CategoryActivity extends AppCompatActivity {
 
     // Available icons (name + resource pairs)
     private static final String[] ICON_NAMES = {
-            "Food & Drinks", "Transport", "Shopping",
-            "Health", "Entertainment", "Salary", "Other"
+            "Ăn & Uống", "Di Chuyển", "Mua Sắm",
+            "Sức Khỏe", "Giải Trí", "Lương", "Khác"
     };
     private static final int[] ICON_RES = {
             R.drawable.ic_cat_food,
@@ -87,15 +87,15 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void onDeleteClick(Category category) {
                 new AlertDialog.Builder(CategoryActivity.this)
-                        .setTitle("Delete Category")
-                        .setMessage("Delete \"" + category.getName() + "\"?")
-                        .setPositiveButton("Delete", (d, w) -> {
+                        .setTitle("Xóa Danh Mục")
+                        .setMessage("Xóa \"" + category.getName() + "\"?")
+                        .setPositiveButton("Xóa", (d, w) -> {
                             dataManager.deleteCategory(category.getId());
                             refreshList();
                             Toast.makeText(CategoryActivity.this,
-                                    "Category deleted", Toast.LENGTH_SHORT).show();
+                                    "Đã xóa danh mục", Toast.LENGTH_SHORT).show();
                         })
-                        .setNegativeButton("Cancel", null)
+                        .setNegativeButton("Hủy", null)
                         .show();
             }
         });
@@ -133,18 +133,18 @@ public class CategoryActivity extends AppCompatActivity {
             }
         }
 
-        String title = editTarget == null ? "Add Category" : "Edit Category";
+        String title = editTarget == null ? "Thêm Danh Mục" : "Chỉnh Sửa Danh Mục";
 
         new AlertDialog.Builder(this)
                 .setTitle(title)
                 .setView(dialogBinding.getRoot())
-                .setPositiveButton("Save", (dialog, which) -> {
+                .setPositiveButton("Lưu", (dialog, which) -> {
                     String name = dialogBinding.etCategoryName.getText() != null
                             ? dialogBinding.etCategoryName.getText().toString().trim()
                             : "";
 
                     if (TextUtils.isEmpty(name)) {
-                        Toast.makeText(this, "Name cannot be empty", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Tên không được để trống", Toast.LENGTH_SHORT).show();
                         return;
                     }
 
@@ -154,14 +154,14 @@ public class CategoryActivity extends AppCompatActivity {
 
                     if (editTarget == null) {
                         dataManager.addCategory(name, iconRes, color);
-                        Toast.makeText(this, "Category added", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Đã thêm danh mục", Toast.LENGTH_SHORT).show();
                     } else {
                         dataManager.updateCategory(editTarget.getId(), name, iconRes, color);
-                        Toast.makeText(this, "Category updated", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Đã cập nhật danh mục", Toast.LENGTH_SHORT).show();
                     }
                     refreshList();
                 })
-                .setNegativeButton("Cancel", null)
+                .setNegativeButton("Hủy", null)
                 .show();
     }
 }

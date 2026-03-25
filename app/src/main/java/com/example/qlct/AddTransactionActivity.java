@@ -95,7 +95,7 @@ public class AddTransactionActivity extends AppCompatActivity {
             amountStr = binding.etAmount.getText().toString().trim();
         }
         if (TextUtils.isEmpty(amountStr)) {
-            binding.tilAmount.setError("Please enter an amount");
+            binding.tilAmount.setError("Vui lòng nhập số tiền");
             return false;
         }
         binding.tilAmount.setError(null);
@@ -104,11 +104,11 @@ public class AddTransactionActivity extends AppCompatActivity {
         try {
             amount = Double.parseDouble(amountStr);
         } catch (NumberFormatException e) {
-            binding.tilAmount.setError("Invalid amount");
+            binding.tilAmount.setError("Số tiền không hợp lệ");
             return false;
         }
         if (amount <= 0) {
-            binding.tilAmount.setError("Amount must be greater than 0");
+            binding.tilAmount.setError("Số tiền phải lớn hơn 0");
             return false;
         }
 
@@ -119,7 +119,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         // Category
         String category = (String) binding.spinnerCategory.getSelectedItem();
         if (category == null) {
-            Toast.makeText(this, "Please select a category", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng chọn danh mục", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -137,7 +137,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         int iconRes = cat != null ? cat.getIconRes() : R.drawable.ic_cat_other;
 
         dataManager.addNewTransaction(amount, type, category, note, date, iconRes);
-        Toast.makeText(this, "Transaction saved!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Đã lưu giao dịch!", Toast.LENGTH_SHORT).show();
         return true;
     }
 }

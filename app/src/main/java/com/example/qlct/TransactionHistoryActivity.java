@@ -21,8 +21,8 @@ public class TransactionHistoryActivity extends AppCompatActivity {
     private TransactionAdapter adapter;
 
     // filter state
-    private String currentType     = "ALL";    // ALL | INCOME | EXPENSE
-    private String currentCategory = "All";    // category name or "All"
+    private String currentType     = "ALL";       // ALL | INCOME | EXPENSE
+    private String currentCategory = "Tất Cả";   // tên danh mục hoặc "Tất Cả"
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +51,12 @@ public class TransactionHistoryActivity extends AppCompatActivity {
             @Override
             public void onItemLongClick(Transaction t) {
                 new androidx.appcompat.app.AlertDialog.Builder(TransactionHistoryActivity.this)
-                        .setTitle("Delete transaction?")
-                        .setPositiveButton("Delete", (d, w) -> {
+                        .setTitle("Xóa giao dịch?")
+                        .setPositiveButton("Xóa", (d, w) -> {
                             dataManager.deleteTransaction(t.getId());
                             applyFilters();
                         })
-                        .setNegativeButton("Cancel", null)
+                        .setNegativeButton("Hủy", null)
                         .show();
             }
         });
@@ -79,7 +79,7 @@ public class TransactionHistoryActivity extends AppCompatActivity {
 
     private void setupCategorySpinner() {
         List<String> names = new ArrayList<>();
-        names.add("All");
+        names.add("Tất Cả");
         names.addAll(dataManager.getCategoryNames());
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
@@ -105,7 +105,7 @@ public class TransactionHistoryActivity extends AppCompatActivity {
 
         for (Transaction t : all) {
             boolean typeMatch = currentType.equals("ALL") || t.getType().equals(currentType);
-            boolean catMatch  = currentCategory.equals("All")
+            boolean catMatch  = currentCategory.equals("Tất Cả")
                     || t.getCategory().equalsIgnoreCase(currentCategory);
             if (typeMatch && catMatch) filtered.add(t);
         }
@@ -119,12 +119,12 @@ public class TransactionHistoryActivity extends AppCompatActivity {
             @Override
             public void onItemLongClick(Transaction t) {
                 new androidx.appcompat.app.AlertDialog.Builder(TransactionHistoryActivity.this)
-                        .setTitle("Delete transaction?")
-                        .setPositiveButton("Delete", (d, w) -> {
+                        .setTitle("Xóa giao dịch?")
+                        .setPositiveButton("Xóa", (d, w) -> {
                             dataManager.deleteTransaction(t.getId());
                             applyFilters();
                         })
-                        .setNegativeButton("Cancel", null)
+                        .setNegativeButton("Hủy", null)
                         .show();
             }
         });

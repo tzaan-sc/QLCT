@@ -32,7 +32,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:text="Transaction History"
+            android:text="Lịch Sử Giao Dịch"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -61,7 +61,7 @@
                 android:id="@+id/chipAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="All"
+                android:text="Tất Cả"
                 android:checked="true"
                 style="@style/Widget.Material3.Chip.Filter" />
 
@@ -69,14 +69,14 @@
                 android:id="@+id/chipIncome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Income"
+                android:text="Thu Nhập"
                 style="@style/Widget.Material3.Chip.Filter" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipExpense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Expense"
+                android:text="Chi Tiêu"
                 style="@style/Widget.Material3.Chip.Filter" />
 
         </com.google.android.material.chip.ChipGroup>
@@ -95,7 +95,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Category: "
+            android:text="Danh Mục: "
             android:textColor="@color/colorTextSecondary"
             android:textSize="13sp" />
 
@@ -117,7 +117,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="32dp"
-        android:text="No transactions found."
+        android:text="Không tìm thấy giao dịch."
         android:textColor="@color/colorTextSecondary"
         android:textSize="14sp"
         android:visibility="gone" />

@@ -34,41 +34,41 @@ public class DataManager {
     // ─── Categories ──────────────────────────────────────────────────────────
 
     private void seedCategories() {
-        categories.add(new Category(1, "Food & Drinks",    R.drawable.ic_cat_food,          Color.parseColor("#FF6F00")));
-        categories.add(new Category(2, "Transport",        R.drawable.ic_cat_transport,     Color.parseColor("#1565C0")));
-        categories.add(new Category(3, "Shopping",         R.drawable.ic_cat_shopping,      Color.parseColor("#6A1B9A")));
-        categories.add(new Category(4, "Health",           R.drawable.ic_cat_health,        Color.parseColor("#D32F2F")));
-        categories.add(new Category(5, "Entertainment",    R.drawable.ic_cat_entertainment, Color.parseColor("#00838F")));
-        categories.add(new Category(6, "Salary",           R.drawable.ic_cat_salary,        Color.parseColor("#2E7D32")));
-        categories.add(new Category(7, "Other",            R.drawable.ic_cat_other,         Color.parseColor("#546E7A")));
+        categories.add(new Category(1, "Ăn & Uống",     R.drawable.ic_cat_food,          Color.parseColor("#FF6F00")));
+        categories.add(new Category(2, "Di Chuyển",      R.drawable.ic_cat_transport,     Color.parseColor("#1565C0")));
+        categories.add(new Category(3, "Mua Sắm",        R.drawable.ic_cat_shopping,      Color.parseColor("#6A1B9A")));
+        categories.add(new Category(4, "Sức Khỏe",       R.drawable.ic_cat_health,        Color.parseColor("#D32F2F")));
+        categories.add(new Category(5, "Giải Trí",       R.drawable.ic_cat_entertainment, Color.parseColor("#00838F")));
+        categories.add(new Category(6, "Lương",          R.drawable.ic_cat_salary,        Color.parseColor("#2E7D32")));
+        categories.add(new Category(7, "Khác",           R.drawable.ic_cat_other,         Color.parseColor("#546E7A")));
     }
 
     private void seedTransactions() {
         Calendar cal = Calendar.getInstance();
 
         addTransaction(new Transaction(nextTransId++, 3_500_000, Transaction.TYPE_INCOME,
-                "Salary", "Monthly salary", daysAgo(cal, 1),  R.drawable.ic_cat_salary));
+                "Lương", "Lương tháng", daysAgo(cal, 1),  R.drawable.ic_cat_salary));
 
         addTransaction(new Transaction(nextTransId++, 85_000,    Transaction.TYPE_EXPENSE,
-                "Food & Drinks", "Lunch with colleagues", daysAgo(cal, 1), R.drawable.ic_cat_food));
+                "Ăn & Uống", "Ăn trưa cùng đồng nghiệp", daysAgo(cal, 1), R.drawable.ic_cat_food));
 
         addTransaction(new Transaction(nextTransId++, 250_000,   Transaction.TYPE_EXPENSE,
-                "Transport", "Taxi fare", daysAgo(cal, 2), R.drawable.ic_cat_transport));
+                "Di Chuyển", "Tiền taxi", daysAgo(cal, 2), R.drawable.ic_cat_transport));
 
         addTransaction(new Transaction(nextTransId++, 1_200_000, Transaction.TYPE_EXPENSE,
-                "Shopping", "New clothes", daysAgo(cal, 3), R.drawable.ic_cat_shopping));
+                "Mua Sắm", "Quần áo mới", daysAgo(cal, 3), R.drawable.ic_cat_shopping));
 
         addTransaction(new Transaction(nextTransId++, 500_000,   Transaction.TYPE_INCOME,
-                "Other", "Freelance payment", daysAgo(cal, 4), R.drawable.ic_cat_other));
+                "Khác", "Thanh toán freelance", daysAgo(cal, 4), R.drawable.ic_cat_other));
 
         addTransaction(new Transaction(nextTransId++, 150_000,   Transaction.TYPE_EXPENSE,
-                "Health", "Pharmacy", daysAgo(cal, 5), R.drawable.ic_cat_health));
+                "Sức Khỏe", "Nhà thuốc", daysAgo(cal, 5), R.drawable.ic_cat_health));
 
         addTransaction(new Transaction(nextTransId++, 200_000,   Transaction.TYPE_EXPENSE,
-                "Entertainment", "Cinema & snacks", daysAgo(cal, 6), R.drawable.ic_cat_entertainment));
+                "Giải Trí", "Xem phim & ăn vặt", daysAgo(cal, 6), R.drawable.ic_cat_entertainment));
 
         addTransaction(new Transaction(nextTransId++, 60_000,    Transaction.TYPE_EXPENSE,
-                "Food & Drinks", "Coffee", daysAgo(cal, 7), R.drawable.ic_cat_food));
+                "Ăn & Uống", "Cà phê", daysAgo(cal, 7), R.drawable.ic_cat_food));
     }
 
     private Date daysAgo(Calendar cal, int days) {
