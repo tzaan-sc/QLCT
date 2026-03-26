@@ -121,7 +121,7 @@
                     android:id="@+id/tilAmount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Amount (₫)"
+                    android:hint="Số tiền (₫)"
                     style="@style/Widget.QLCT.TextInputLayout"
                     app:startIconDrawable="@android:drawable/ic_menu_sort_by_size"
                     app:startIconTint="@color/colorAccent">
@@ -220,7 +220,7 @@
                     android:id="@+id/tilNote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Note (optional)"
+                    android:hint="Note"
                     style="@style/Widget.QLCT.TextInputLayout">
 
                     <com.google.android.material.textfield.TextInputEditText
