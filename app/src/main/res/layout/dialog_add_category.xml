@@ -11,7 +11,7 @@
         android:id="@+id/tilCategoryName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Category Name"
+        android:hint="Tên danh mục"
         style="@style/Widget.QLCT.TextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText

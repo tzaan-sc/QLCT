@@ -67,7 +67,6 @@ public class CategoryActivity extends AppCompatActivity {
 
     private void setupClickListeners() {
         binding.btnBack.setOnClickListener(v -> finish());
-        binding.btnAddCategory.setOnClickListener(v -> showAddDialog(null));
         binding.fabAddCategory.setOnClickListener(v -> showAddDialog(null));
     }
 

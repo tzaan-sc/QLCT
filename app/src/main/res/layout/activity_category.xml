@@ -37,15 +37,7 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- Add button in header -->
-        <ImageButton
-            android:id="@+id/btnAddCategory"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Add Category"
-            android:src="@android:drawable/ic_input_add"
-            android:tint="@color/white" />
+
     </LinearLayout>
 
     <!-- ── Empty state ────────────────────────────────────────────────── -->
