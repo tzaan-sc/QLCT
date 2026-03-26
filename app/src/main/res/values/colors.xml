@@ -5,12 +5,13 @@
     <color name="colorAccent">#EC407A</color>
     <color name="colorIncome">#00C853</color>
     <color name="colorExpense">#FF1744</color>
-    <color name="colorBackground">#F5F7FA</color>
+    <color name="colorBackground">#FFF5F8</color>
     <color name="colorSurface">#FFFFFF</color>
     <color name="colorCard">#FFFFFF</color>
     <color name="colorTextPrimary">#1A1A2E</color>
     <color name="colorTextSecondary">#6E7191</color>
     <color name="colorDivider">#E8E8F0</color>
+    <!-- Gradient & Fab -->
     <color name="colorHeaderStart">#971340</color>
     <color name="colorHeaderEnd">#942A4D</color>
     <color name="colorFab">#FF528D</color>
