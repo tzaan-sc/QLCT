@@ -94,7 +94,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="Thu Nhập"
-                        android:textColor="@color/colorIncome"
+                        android:textColor="@color/colorExpense"
                         android:textSize="15sp" />
 
                 </RadioGroup>
