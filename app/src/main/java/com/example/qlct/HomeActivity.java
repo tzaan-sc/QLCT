@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding     = ActivityHomeBinding.inflate(getLayoutInflater());
-        dataManager = DataManager.getInstance();
+        dataManager = DataManager.getInstance(this);
         nf          = NumberFormat.getNumberInstance(new Locale("vi", "VN"));
 
         setContentView(binding.getRoot());

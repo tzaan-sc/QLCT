@@ -1,112 +1,68 @@
 package com.example.qlct;
 
 import android.content.Context;
-import android.graphics.Color;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 /**
- * DataManager – Singleton in-memory store for transactions and categories.
- * In a real app this would be backed by Room / SQLite.
+ * DataManager – Singleton wrapper for DatabaseHelper.
  */
 public class DataManager {
 
     private static DataManager instance;
+    private DatabaseHelper dbHelper;
 
-    private final List<Transaction> transactions = new ArrayList<>();
-    private final List<Category>    categories   = new ArrayList<>();
-    private long nextTransId  = 100;
-    private long nextCatId    = 10;
-
-    private DataManager() {
-        seedCategories();
-        seedTransactions();
+    private DataManager(Context context) {
+        // Use application context to prevent memory leaks
+        this.dbHelper = new DatabaseHelper(context.getApplicationContext());
     }
 
-    public static synchronized DataManager getInstance() {
-        if (instance == null) instance = new DataManager();
+    public static synchronized DataManager getInstance(Context context) {
+        if (instance == null) {
+            instance = new DataManager(context);
+        }
         return instance;
     }
 
-    // ─── Categories ──────────────────────────────────────────────────────────
-
-    private void seedCategories() {
-        categories.add(new Category(1, "Ăn & Uống",     R.drawable.ic_cat_food,          Color.parseColor("#FF6F00")));
-        categories.add(new Category(2, "Di Chuyển",      R.drawable.ic_cat_transport,     Color.parseColor("#1565C0")));
-        categories.add(new Category(3, "Mua Sắm",        R.drawable.ic_cat_shopping,      Color.parseColor("#6A1B9A")));
-        categories.add(new Category(4, "Sức Khỏe",       R.drawable.ic_cat_health,        Color.parseColor("#D32F2F")));
-        categories.add(new Category(5, "Giải Trí",       R.drawable.ic_cat_entertainment, Color.parseColor("#00838F")));
-        categories.add(new Category(6, "Lương",          R.drawable.ic_cat_salary,        Color.parseColor("#2E7D32")));
-        categories.add(new Category(7, "Khác",           R.drawable.ic_cat_other,         Color.parseColor("#546E7A")));
-    }
-
-    private void seedTransactions() {
-        Calendar cal = Calendar.getInstance();
-
-        addTransaction(new Transaction(nextTransId++, 3_500_000, Transaction.TYPE_INCOME,
-                "Lương", "Lương tháng", daysAgo(cal, 1),  R.drawable.ic_cat_salary));
-
-        addTransaction(new Transaction(nextTransId++, 85_000,    Transaction.TYPE_EXPENSE,
-                "Ăn & Uống", "Ăn trưa cùng đồng nghiệp", daysAgo(cal, 1), R.drawable.ic_cat_food));
-
-        addTransaction(new Transaction(nextTransId++, 250_000,   Transaction.TYPE_EXPENSE,
-                "Di Chuyển", "Tiền taxi", daysAgo(cal, 2), R.drawable.ic_cat_transport));
-
-        addTransaction(new Transaction(nextTransId++, 1_200_000, Transaction.TYPE_EXPENSE,
-                "Mua Sắm", "Quần áo mới", daysAgo(cal, 3), R.drawable.ic_cat_shopping));
-
-        addTransaction(new Transaction(nextTransId++, 500_000,   Transaction.TYPE_INCOME,
-                "Khác", "Thanh toán freelance", daysAgo(cal, 4), R.drawable.ic_cat_other));
-
-        addTransaction(new Transaction(nextTransId++, 150_000,   Transaction.TYPE_EXPENSE,
-                "Sức Khỏe", "Nhà thuốc", daysAgo(cal, 5), R.drawable.ic_cat_health));
-
-        addTransaction(new Transaction(nextTransId++, 200_000,   Transaction.TYPE_EXPENSE,
-                "Giải Trí", "Xem phim & ăn vặt", daysAgo(cal, 6), R.drawable.ic_cat_entertainment));
-
-        addTransaction(new Transaction(nextTransId++, 60_000,    Transaction.TYPE_EXPENSE,
-                "Ăn & Uống", "Cà phê", daysAgo(cal, 7), R.drawable.ic_cat_food));
-    }
-
-    private Date daysAgo(Calendar cal, int days) {
-        cal.setTime(new Date());
-        cal.add(Calendar.DAY_OF_YEAR, -days);
-        return cal.getTime();
+    // Temporary fallback for places where getInstance() is called without context if any
+    // It's better to update all callers, but we keep this to signal error if called incorrectly.
+    public static synchronized DataManager getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException("DataManager is not initialized, call getInstance(Context) first.");
+        }
+        return instance;
     }
 
     // ─── CRUD – Transactions ────────────────────────────────────────────────
 
     public void addTransaction(Transaction t) {
-        transactions.add(0, t); // newest first
+        // Only used previously for seeding, but we can support it.
+        dbHelper.addTransaction(t.getAmount(), t.getType(), t.getCategory(), t.getNote(), t.getDate(), t.getCategoryIconRes());
     }
 
     public void addNewTransaction(double amount, String type,
                                    String category, String note,
                                    Date date, int iconRes) {
-        Transaction t = new Transaction(nextTransId++, amount, type,
-                category, note, date, iconRes);
-        transactions.add(0, t);
+        dbHelper.addTransaction(amount, type, category, note, date, iconRes);
     }
 
     public void deleteTransaction(long id) {
-        transactions.removeIf(t -> t.getId() == id);
+        dbHelper.deleteTransaction(id);
     }
 
     public List<Transaction> getAllTransactions() {
-        return new ArrayList<>(transactions);
+        return dbHelper.getAllTransactions();
     }
 
     public List<Transaction> getRecentTransactions(int count) {
-        int end = Math.min(count, transactions.size());
-        return new ArrayList<>(transactions.subList(0, end));
+        return dbHelper.getRecentTransactions(count);
     }
 
     public List<Transaction> getTransactionsByType(String type) {
         List<Transaction> result = new ArrayList<>();
-        for (Transaction t : transactions) {
+        for (Transaction t : dbHelper.getAllTransactions()) {
             if (t.getType().equals(type)) result.add(t);
         }
         return result;
@@ -114,7 +70,7 @@ public class DataManager {
 
     public List<Transaction> getTransactionsByCategory(String category) {
         List<Transaction> result = new ArrayList<>();
-        for (Transaction t : transactions) {
+        for (Transaction t : dbHelper.getAllTransactions()) {
             if (t.getCategory().equalsIgnoreCase(category)) result.add(t);
         }
         return result;
@@ -123,39 +79,36 @@ public class DataManager {
     // ─── CRUD – Categories ─────────────────────────────────────────────────
 
     public List<Category> getCategories() {
-        return new ArrayList<>(categories);
+        return dbHelper.getAllCategories();
     }
 
     public void addCategory(String name, int iconRes, int color) {
-        categories.add(new Category(nextCatId++, name, iconRes, color));
+        dbHelper.addCategory(name, iconRes, color);
     }
 
     public void updateCategory(long id, String name, int iconRes, int color) {
-        for (Category c : categories) {
-            if (c.getId() == id) {
-                c.setName(name);
-                c.setIconRes(iconRes);
-                c.setColor(color);
-                return;
-            }
-        }
+        dbHelper.updateCategory(id, name, iconRes, color);
     }
 
     public void deleteCategory(long id) {
-        categories.removeIf(c -> c.getId() == id);
+        dbHelper.deleteCategory(id);
     }
 
     // ─── Aggregates ────────────────────────────────────────────────────────
 
     public double getTotalIncome() {
         double sum = 0;
-        for (Transaction t : transactions) if (t.isIncome())  sum += t.getAmount();
+        for (Transaction t : dbHelper.getAllTransactions()) {
+            if (t.isIncome()) sum += t.getAmount();
+        }
         return sum;
     }
 
     public double getTotalExpense() {
         double sum = 0;
-        for (Transaction t : transactions) if (t.isExpense()) sum += t.getAmount();
+        for (Transaction t : dbHelper.getAllTransactions()) {
+            if (t.isExpense()) sum += t.getAmount();
+        }
         return sum;
     }
 
@@ -165,14 +118,13 @@ public class DataManager {
 
     public List<String> getCategoryNames() {
         List<String> names = new ArrayList<>();
-        for (Category c : categories) names.add(c.getName());
+        for (Category c : dbHelper.getAllCategories()) {
+            names.add(c.getName());
+        }
         return names;
     }
 
     public Category getCategoryByName(String name) {
-        for (Category c : categories) {
-            if (c.getName().equalsIgnoreCase(name)) return c;
-        }
-        return null;
+        return dbHelper.getCategoryByName(name);
     }
 }

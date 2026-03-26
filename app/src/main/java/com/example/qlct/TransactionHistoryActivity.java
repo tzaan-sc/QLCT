@@ -28,7 +28,7 @@ public class TransactionHistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding     = ActivityTransactionHistoryBinding.inflate(getLayoutInflater());
-        dataManager = DataManager.getInstance();
+        dataManager = DataManager.getInstance(this);
         setContentView(binding.getRoot());
 
         setupRecyclerView();

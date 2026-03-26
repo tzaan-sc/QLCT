@@ -28,7 +28,7 @@ public class AddTransactionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding     = ActivityAddTransactionBinding.inflate(getLayoutInflater());
-        dataManager = DataManager.getInstance();
+        dataManager = DataManager.getInstance(this);
         sdf         = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
         selectedDate = Calendar.getInstance();
 

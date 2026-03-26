@@ -51,7 +51,7 @@ public class CategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding     = ActivityCategoryBinding.inflate(getLayoutInflater());
-        dataManager = DataManager.getInstance();
+        dataManager = DataManager.getInstance(this);
         setContentView(binding.getRoot());
 
         setupRecyclerView();
