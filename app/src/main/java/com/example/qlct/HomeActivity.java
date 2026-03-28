@@ -33,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
         setupRecyclerView();
         setupClickListeners();
         refreshUI();
+        setupBottomNavigation();
     }
 
     @Override
@@ -137,5 +138,25 @@ public class HomeActivity extends AppCompatActivity {
         if (requestCode == REQUEST_ADD && resultCode == RESULT_OK) {
             refreshUI();
         }
+    }
+
+    private void setupBottomNavigation() {
+        binding.bottomNavigation.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) {
+                binding.fragmentContainer.setVisibility(View.GONE);
+                binding.fabAdd.show();
+                refreshUI();
+                return true;
+            } else if (id == R.id.nav_overview) {
+                binding.fragmentContainer.setVisibility(View.VISIBLE);
+                binding.fabAdd.hide();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new OverviewFragment())
+                        .commit();
+                return true;
+            }
+            return false;
+        });
     }
 }

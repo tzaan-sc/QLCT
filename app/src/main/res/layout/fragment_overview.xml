@@ -6,21 +6,19 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
-    <!-- ── Scrollable content ─────────────────────────────────────────── -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="88dp">
 
-            <!-- ── Header gradient card ─────────────────────────────── -->
+            <!-- Header Gradient -->
             <LinearLayout
-                android:id="@+id/headerLayout"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:background="@drawable/bg_header_gradient"
@@ -31,52 +29,15 @@
                 android:paddingTop="40dp"
                 android:paddingBottom="36dp">
 
-                <!-- Top row: title + nav icons -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Ví Của Tôi"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:orientation="horizontal">
-
-                        <ImageButton
-                            android:id="@+id/btnHistory"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="History"
-                            android:src="@android:drawable/ic_menu_recent_history"
-                            android:tint="@color/white" />
-
-                        <ImageButton
-                            android:id="@+id/btnCategories"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_marginStart="4dp"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="Categories"
-                            android:src="@android:drawable/ic_menu_manage"
-                            android:tint="@color/white" />
-
-                    </LinearLayout>
-                </RelativeLayout>
-
-                <!-- Balance -->
                 <TextView
-                    android:id="@+id/tvBalanceLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Tổng Quan"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -97,7 +58,7 @@
 
             </LinearLayout>
 
-            <!-- ── Income / Expense summary row ─────────────────────── -->
+            <!-- Khối Summary -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -106,7 +67,7 @@
                 android:layout_marginEnd="20dp"
                 android:orientation="horizontal">
 
-                <!-- Income card -->
+                <!-- Card Thu Nhập -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -126,7 +87,7 @@
                             android:layout_height="40dp"
                             android:padding="8dp"
                             android:src="@android:drawable/arrow_up_float"
-                            android:tint="@color/colorIncome" />
+                            app:tint="@color/colorIncome" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -154,7 +115,7 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Expense card -->
+                <!-- Card Chi Tiêu -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -175,7 +136,7 @@
                             android:layout_height="40dp"
                             android:padding="8dp"
                             android:src="@android:drawable/arrow_down_float"
-                            android:tint="@color/colorExpense" />
+                            app:tint="@color/colorExpense" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -204,95 +165,140 @@
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
-            <!-- ── Recent Transactions header ───────────────────────── -->
-            <RelativeLayout
+            <!-- Pie Chart -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="28dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="8dp">
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Giao Dịch Gần Đây"
-                    android:textColor="@color/colorTextPrimary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <TextView
-                    android:id="@+id/tvSeeAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:background="?attr/selectableItemBackground"
-                    android:fontFamily="sans-serif-medium"
-                    android:padding="4dp"
-                    android:text="Xem tất cả"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="14sp" />
-            </RelativeLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Phân bổ chi tiêu"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-            <!-- ── Empty state ────────────────────────────────────────── -->
-            <TextView
-                android:id="@+id/tvEmpty"
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/pieChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_marginTop="12dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Bar Chart -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="32dp"
-                android:text="Chưa có giao dịch nào.\nNhấn + để thêm mới!"
-                android:textColor="@color/colorTextSecondary"
-                android:textSize="14sp"
-                android:visibility="gone" />
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
 
-            <!-- ── RecyclerView ───────────────────────────────────────── -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewTransactions"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Chi tiêu 7 ngày qua"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_marginTop="12dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── Insights Section ────────────────────────────────────────── -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:nestedScrollingEnabled="false"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="88dp" />
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Thông Tin Chi Tiết (Insights)"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- 1. Top Spending Category -->
+                    <TextView
+                        android:id="@+id/tvInsightTopCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="🏆 Bạn chi tiêu nhiều nhất cho: -"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- 2. Warning -->
+                    <TextView
+                        android:id="@+id/tvInsightWarning"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="⚠️ Cảnh báo chi tiêu: -"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- 3. Highest Spending Day -->
+                    <TextView
+                        android:id="@+id/tvInsightHighestDay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="🔥 Bạn chi nhiều nhất vào ngày: -"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- 4. Trend -->
+                    <TextView
+                        android:id="@+id/tvInsightTrend"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="📈 Xu hướng: -"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <!-- ── FAB ────────────────────────────────────────────────────────── -->
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fabAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="76dp"
-        android:text="Thêm"
-        app:icon="@android:drawable/ic_input_add"
-        app:iconTint="@color/white"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/colorAccent" />
-
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="56dp"
-        android:background="@color/colorBackground"
-        android:visibility="gone"
-        android:elevation="4dp" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="#FFFFFF"
-        app:elevation="8dp"
-        app:menu="@menu/bottom_nav_menu" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
