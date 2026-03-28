@@ -92,9 +92,12 @@ public class OverviewFragment extends Fragment {
 
         List<PieEntry> entries = new ArrayList<>();
         int[] colors = {
-            Color.parseColor("#4CAF50"), Color.parseColor("#2196F3"),
-            Color.parseColor("#FFC107"), Color.parseColor("#FF5722"),
-            Color.parseColor("#9C27B0"), Color.parseColor("#00BCD4")
+            Color.parseColor("#FFADAD"), // Light Red
+            Color.parseColor("#FFD6A5"), // Light Orange
+            Color.parseColor("#FDFFB6"), // Light Yellow
+            Color.parseColor("#CAFFBF"), // Light Green
+            Color.parseColor("#9BF6FF"), // Light Cyan
+            Color.parseColor("#A0C4FF")  // Light Blue
         };
 
         for (Map.Entry<String, Double> entry : expensesByCategory.entrySet()) {
@@ -106,7 +109,7 @@ public class OverviewFragment extends Fragment {
         PieDataSet dataSet = new PieDataSet(entries, "");
         dataSet.setColors(colors);
         dataSet.setValueTextSize(12f);
-        dataSet.setValueTextColor(Color.WHITE);
+        dataSet.setValueTextColor(Color.parseColor("#555555")); // Dark gray for readability
         dataSet.setSliceSpace(2f);
 
         PieData data = new PieData(dataSet);
@@ -114,6 +117,7 @@ public class OverviewFragment extends Fragment {
         
         pieChart.setData(data);
         pieChart.setUsePercentValues(true);
+        pieChart.setDrawEntryLabels(false); // Hide overlapping text on slices, only show numbers
         pieChart.getDescription().setEnabled(false);
         pieChart.setCenterText("Chi Tiêu");
         pieChart.setCenterTextSize(16f);
@@ -155,8 +159,9 @@ public class OverviewFragment extends Fragment {
         }
 
         BarDataSet dataSet = new BarDataSet(entries, "Chi tiêu");
-        dataSet.setColor(Color.parseColor("#E53935")); // Màu giống nút Expense
+        dataSet.setColor(Color.parseColor("#FFADAD")); // Soft pastel red
         dataSet.setValueTextSize(10f);
+        dataSet.setValueTextColor(Color.parseColor("#555555"));
 
         BarData data = new BarData(dataSet);
         barChart.setData(data);
