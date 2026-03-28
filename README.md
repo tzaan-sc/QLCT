@@ -12,76 +12,17 @@
 
 ## 🛠️ Công nghệ sử dụng
 
-- **Electron**: Framework cho ứng dụng desktop
-- **React**: Thư viện giao diện người dùng
-- **Vite**: Build tool tốc độ cao
-- **Tailwind CSS**: Framework CSS tiện ích
-- **Lucide React**: Icon library
 
 ## 📦 Cài đặt và chạy
 
-### Yêu cầu
-
-- Node.js >= 18.x
-- npm hoặc yarn
-
-### Cài đặt
-
-1. Clone repository:
-   ```bash
-   git clone <repository-url>
-   cd QLCT
-   ```
-
-2. Cài đặt dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Chạy ứng dụng:
-   ```bash
-   npm run dev
-   ```
-
-### Build ứng dụng
-
-```bash
-npm run build
-```
 
 ## 📂 Cấu trúc dự án
 
-```
-QLCT/
-├── src/
-│   ├── components/      # Các component React
-│   ├── pages/           # Các trang ứng dụng
-│   ├── services/        # Các service và API
-│   ├── utils/           # Các hàm tiện ích
-│   ├── App.tsx          # Component chính
-│   └── main.tsx         # Điểm vào ứng dụng
-├── electron/            # Cấu hình Electron
-├── public/              # Các file tĩnh
-├── package.json         # Dependencies và scripts
-└── vite.config.ts       # Cấu hình Vite
-```
 
 ## 📝 Ghi chú phát triển
 
-- Ứng dụng sử dụng Electron để đóng gói ứng dụng desktop
-- React được sử dụng cho giao diện người dùng
-- Tailwind CSS cho styling nhanh chóng
-- Dữ liệu được lưu trữ cục bộ trong file JSON
 
 ## 🤝 Đóng góp
-
-Chào mừng bạn đóng góp cho dự án! Vui lòng:
-
-1. Fork repository
-2. Tạo branch mới (`git checkout -b feature/AmazingFeature`)
-3. Commit thay đổi (`git commit -m 'Add some AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Mở Pull Request
 
 ## 📄 License
 
